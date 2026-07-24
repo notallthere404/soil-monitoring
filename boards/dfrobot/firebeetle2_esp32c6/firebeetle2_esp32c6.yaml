@@ -1,0 +1,18 @@
+identifier: firebeetle2_esp32c6
+name: ESP32-C6
+vendor: dfrobot
+type: mcu
+arch: riscv
+toolchain:
+  - zephyr
+supported:
+  - adc
+  - gpio
+  - watchdog
+  - uart
+  - dma
+  - pwm
+  - spi
+  - counter
+  - entropy
+  - i2c

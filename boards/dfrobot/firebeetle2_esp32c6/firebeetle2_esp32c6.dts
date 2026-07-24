@@ -1,0 +1,52 @@
+/dts-v1/;
+
+#include <espressif/esp32c6/esp32c6_wroom_n4.dtsi>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <espressif/partitions_0x0_default.dtsi>
+
+/ {
+    model = "firebeetle2_esp32c6";
+    compatible = "espressif,esp32c6";
+
+    chosen {
+        zephyr,sram = &sramhp;
+        zephyr,console = &usb_serial;
+        zephyr,flash = &flash0;
+        zephyr,code-partition = &slot0_partition;
+    };
+
+    aliases {
+        sw0 = &user_button1;
+        watchdog0 = &wdt0;
+    };
+
+    gpio_keys {
+        compatible = "gpio-keys";
+        user_button1: button_1 {
+            label = "User SW1";
+            gpios = <&gpio0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            zephyr,code = <INPUT_KEY_0>;
+        };
+    };
+};
+
+&usb_serial {
+    status = "okay";
+};
+
+&adc0 {
+    status = "okay";
+};
+
+&trng0 {
+    status = "okay";
+};
+
+&gpio0 {
+    status = "okay";
+};
+
+&wdt0 {
+    status = "okay";
+};
+
